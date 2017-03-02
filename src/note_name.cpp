@@ -1,7 +1,3 @@
-//
-// Created by Brian Margolis on 3/1/17.
-//
-
 #include "note_name.h"
 
 note_name::note_name(char name, char modifier, int octave) : name(name), modifier(modifier), octave(octave) {

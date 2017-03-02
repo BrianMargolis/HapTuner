@@ -1,7 +1,3 @@
-//
-// Created by Brian Margolis on 3/1/17.
-//
-
 #include "tuned_note.h"
 
 tuned_note::tuned_note() {

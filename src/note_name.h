@@ -1,7 +1,3 @@
-//
-// Created by Brian Margolis on 3/1/17.
-//
-
 #ifndef EECS_352_PROJECT_NOTE_NAME_H
 #define EECS_352_PROJECT_NOTE_NAME_H
 
