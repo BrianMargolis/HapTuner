@@ -1,8 +1,7 @@
 #ifndef EECS_352_PROJECT_NOTE_NAME_H
 #define EECS_352_PROJECT_NOTE_NAME_H
 
-
-#include <ostream>
+// Object used to keep track of the note name, modifier (i.e. sharp/flat/natural) and octave for a specific piano key
 
 class note_name {
 public:

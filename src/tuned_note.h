@@ -1,6 +1,7 @@
 #ifndef EECS_352_PROJECT_NOTE_H
 #define EECS_352_PROJECT_NOTE_H
 
+// Object returned by pitch_utils/freq_to_note(double freq, std::array<double, 88> pitch_freqs)
 
 class tuned_note {
 public:

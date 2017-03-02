@@ -1,13 +1,12 @@
 #include <math.h>
-#include "stdlib.h"
-#include "pitch_utils.h"
-#include "tuned_note.h"
+#include <stdlib.h>
 #include <string>
-#include <iterator>
 #include <iostream>
-#include <algorithm>
-#include <array>
 
+
+#include "pitch_utils.h"
+
+// Given a reference for A (typically 440) in Hz, computes an array of the frequencies for each of the 88 piano keys
 std::array<double, 88> get_pitch_freqs(double reference) {
     // pointer to an array that will hold the frequencies of the 88 notes
     std::array<double, 88> pitch_freqs;
@@ -24,8 +23,10 @@ std::array<double, 88> get_pitch_freqs(double reference) {
     return pitch_freqs;
 }
 
-std::array<note_name*, 88> get_pitch_names() {
-    std::array<note_name*, 88> pitch_names;
+// Computes an array of the names and octaves for each of the 88 piano keys
+// Note that it currently writes everything as a sharp - TODO: make flats happen!
+std::array<note_name *, 88> get_pitch_names() {
+    std::array<note_name *, 88> pitch_names;
 
     char name = 'A';
     char modifier = 'n';
@@ -54,20 +55,29 @@ std::array<note_name*, 88> get_pitch_names() {
     return pitch_names;
 }
 
+// Given a frequency, it:
+// 1) finds the two pitches it sits between
+// 2) finds the mid-point between those two frequencies
+// 3) figures out which side of the midpoint it's on, and picks that note as its "correct" value
+// 4) calculates the distance from the picked note, where:
+// *  1 is maximally sharp (i.e. any higher and it would be -1 for the next highest note)
+// * -1 is maximally flat (i.e. any lower and it would be 1 for the next lowest note)
+// *  0 is in tune
 tuned_note freq_to_note(double freq, std::array<double, 88> pitch_freqs) {
-    tuned_note n; // initialize with dummy values
-    if (freq < pitch_freqs[0] || freq > pitch_freqs[87]) {
+    tuned_note n; // initialize with dummy values that we'll use to indicate error
+    if (freq < pitch_freqs[0] || freq > pitch_freqs[87]) { // confirm that the frequency is within piano range
         return n;
     }
+
+    // Run up the keyboard until we've found the pitch right below our frequency
     int i = 0;
     while (i < 88 && freq < pitch_freqs[i]) {
         i++;
     }
 
-
-    double left = pitch_freqs[i];
-    double right = pitch_freqs[i + 1];
-    double middle = left + right / 2;
+    double left = pitch_freqs[i];       // note to the left of our freq
+    double right = pitch_freqs[i + 1];  // note to the right of our freq
+    double middle = left + right / 2;   // midpoint
     if (freq <= middle) {
         n.setPitch(i);
         n.setDistance((freq - left) / (middle - left));

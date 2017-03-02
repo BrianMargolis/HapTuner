@@ -1,8 +1,8 @@
 #include <array>
 #include <vector>
-#include "main.h"
-#include "dywapitchtrack.h"
+
 #include "pitch_utils.h"
+#include "dywapitchtrack.h"
 
 int main() {
     // Initialize a pitch tracker object as per the dywapitchtracker documentation (found in dywapitchtracker.h)
@@ -14,7 +14,6 @@ int main() {
     std::array<double, 88> pitch_freqs = get_pitch_freqs(reference);
 
     // pitch_names[i] = *(tuned_note object with letter (ABCDEFG), modifier (n#b), and octave number for the ith tuned_note on a piano (A0 = 0))
-    // Note that it currently writes everything as a sharp - TODO: make flats happen!
     std::array<note_name *, 88> pitch_names = get_pitch_names();
 
     /* BEGIN TESTING *
@@ -53,7 +52,8 @@ int main() {
         // Some useful print statements for debugging
         printf("freq %f", freq);
         printf("closest tuned_note %c%c", name.getName(), name.getModifier());
-        printf("distance to closest tuned_note %f", n.getDistance()); // note that this ranges from -1 (most flat) to 1 (most sharp).
+        printf("distance to closest tuned_note %f",
+               n.getDistance()); // note that this ranges from -1 (most flat) to 1 (most sharp).
 
         // Jump to the next bin
         startsample += samplecount;
@@ -62,7 +62,8 @@ int main() {
     // Print out freq and note vector values
     for (int i = 0; i < freqs.size(); i++) {
         printf("freq in window %d was %f; ", i, freqs[i]);
-        printf("note  was %c%c\n", pitch_names[notes[i].getPitch()]->getName(), pitch_names[notes[i].getPitch()]->getModifier());
+        printf("note  was %c%c\n", pitch_names[notes[i].getPitch()]->getName(),
+               pitch_names[notes[i].getPitch()]->getModifier());
     }
 
     return 1;
