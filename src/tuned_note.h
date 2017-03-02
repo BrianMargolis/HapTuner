@@ -6,11 +6,11 @@
 #define EECS_352_PROJECT_NOTE_H
 
 
-class note {
+class tuned_note {
 public:
-    note(int pitch, double distance);
+    tuned_note(int pitch, double distance);
 
-    note();
+    tuned_note();
 
     int getPitch() const;
 

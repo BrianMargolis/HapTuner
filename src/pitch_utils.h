@@ -3,7 +3,7 @@
 
 
 #include <array>
-#include "note.h"
+#include "tuned_note.h"
 #include "note_name.h"
 
 
@@ -11,7 +11,7 @@ std::array<double, 88> get_pitch_freqs(double reference);
 
 std::array<note_name*, 88> get_pitch_names();
 
-note freq_to_note(double freq, std::array<double, 88> pitch_freqs);
+tuned_note freq_to_note(double freq, std::array<double, 88> pitch_freqs);
 
 
 #endif //EECS_352_PROJECT_PITCH_UTILS_H

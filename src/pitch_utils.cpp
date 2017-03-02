@@ -1,7 +1,7 @@
 #include <math.h>
 #include "stdlib.h"
 #include "pitch_utils.h"
-#include "note.h"
+#include "tuned_note.h"
 #include <string>
 #include <iterator>
 #include <iostream>
@@ -12,10 +12,10 @@ std::array<double, 88> get_pitch_freqs(double reference) {
     // pointer to an array that will hold the frequencies of the 88 notes
     std::array<double, 88> pitch_freqs;
 
-    int A_ref_index = 48; // A is the 49th note on the keyboard
+    int A_ref_index = 48; // A is the 49th tuned_note on the keyboard
     pitch_freqs[A_ref_index] = reference; // set A to reference (typically 440 Hz)
 
-    // set all other values equal to 2^(n / 12) * reference, where n = distance between reference and that note
+    // set all other values equal to 2^(n / 12) * reference, where n = distance between reference and that tuned_note
     for (int i = 0; i < 88; i++) {
         int diff = i - A_ref_index;
         pitch_freqs[i] = pow(2, diff / 12.0) * reference;
@@ -54,8 +54,8 @@ std::array<note_name*, 88> get_pitch_names() {
     return pitch_names;
 }
 
-note freq_to_note(double freq, std::array<double, 88> pitch_freqs) {
-    note n; // initialize with dummy values
+tuned_note freq_to_note(double freq, std::array<double, 88> pitch_freqs) {
+    tuned_note n; // initialize with dummy values
     if (freq < pitch_freqs[0] || freq > pitch_freqs[87]) {
         return n;
     }
