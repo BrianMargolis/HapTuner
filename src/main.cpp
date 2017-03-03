@@ -29,7 +29,7 @@ int main() {
 
     // Parameters for binning the signal
     int startsample = 0;            // start at the beginning of the signal - TODO: allow user defined offset in secs, convert to samples, set as initial value for startsample
-    int samplecount = 1024 * 4;     // bin length; good to use powers of 2
+    int samplecount = 1024 * 4;     // bin length; good to use powers of 2 - TODO: use dywapitch_neededsamplecount(int minFreq) to get an actual value, then round up to nearest power of 2
 
     // Create vectors to accumulate the bin frequencies and tuned notes
     // TODO: calculate size on onset to save time by avoiding costly resizes
