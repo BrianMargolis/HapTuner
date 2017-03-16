@@ -82,7 +82,7 @@ tuned_note freq_to_note(float freq, std::array<float, 88> pitch_freqs) {
         n.setDistance((freq - left) / (middle - left));
     } else {
         n.setPitch(i);
-        n.setDistance((freq - right) / (middle - right));
+        n.setDistance((right - freq) / (middle - right));
     }
 
     return n;
