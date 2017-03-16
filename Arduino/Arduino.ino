@@ -21,8 +21,8 @@ AudioConnection          patchCord1(adc1, notefreq);
 std::array<float, 88> pitch_freqs;
 std::array<note_name *, 88> pitch_names;
 
-int flat = 14; // pin 14
-int sharp = 15; // pin 15
+int flat = 11; // pin 14
+int sharp = 12; // pin 15
 
 void setup() {
   Serial.begin(9600);
@@ -57,7 +57,7 @@ void loop() {
     // get the nearest note
     tuned_note n = freq_to_note(freq, pitch_freqs);
     int index = n.getPitch();
-    double dist = n.getDistance();
+    double distance = n.getDistance();
 
     note_name note = *pitch_names[index];
     char name = note.getName();
@@ -69,11 +69,14 @@ void loop() {
     Serial.printf("distance to closest tuned_note %f\n", n.getDistance()); // note that this ranges from -1 (most flat) to 1 (most sharp).
 
     if (distance < -tolerance) {
-      
+      digitalWrite(flat, HIGH);
+      digitalWrite(sharp, LOW);
     } else if (distance > tolerance) {
-
+      digitalWrite(flat, LOW);
+      digitalWrite(sharp, HIGH);
     } else {
-
+      digitalWrite(flat, LOW);
+      digitalWrite(sharp, LOW);
     }
 
   }
