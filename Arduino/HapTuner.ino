@@ -52,7 +52,7 @@ void loop() {
   if (notefreq.available()) {
     freq = notefreq.read();
     prob = notefreq.probability();
-    Serial.printf("Note: %3.2f | Probability: %.2f\n", freq, prob);
+//    Serial.printf("Note: %3.2f | Probability: %.2f\n", freq, prob);
 
     // get the nearest note
     tuned_note n = freq_to_note(freq, pitch_freqs);
@@ -68,16 +68,16 @@ void loop() {
     Serial.printf("closest tuned_note %c%c\n", note.getName(), note.getModifier());
     Serial.printf("distance to closest tuned_note %f\n", n.getDistance()); // note that this ranges from -1 (most flat) to 1 (most sharp).
 
-    if (distance < -tolerance) {
-      digitalWrite(flat, HIGH);
-      digitalWrite(sharp, LOW);
-    } else if (distance > tolerance) {
-      digitalWrite(flat, LOW);
-      digitalWrite(sharp, HIGH);
-    } else {
-      digitalWrite(flat, LOW);
-      digitalWrite(sharp, LOW);
-    }
+//    if (distance < -tolerance) {
+//      digitalWrite(flat, HIGH);
+//      digitalWrite(sharp, LOW);
+//    } else if (distance > tolerance) {
+//      digitalWrite(flat, LOW);
+//      digitalWrite(sharp, HIGH);
+//    } else {
+//      digitalWrite(flat, LOW);
+//      digitalWrite(sharp, LOW);
+//    }
 
   }
 }
