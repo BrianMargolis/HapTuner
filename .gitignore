@@ -93,3 +93,5 @@ ENV/
 .idea/vcs.xml
 
 cmake-build-debug/*
+
+docs/.idea/*
