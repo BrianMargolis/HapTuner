@@ -89,19 +89,33 @@
         <div class="content">
             <h2>Results</h2>
             <p>
-                Our system was successfully implemented! We used both a sine wave generator iPhone app and an guitar to test how well the tuner works. It
-                successfully identified whether a note was in tune, flat, or sharp. The system, however, is not yet optimized for a few cases. If the pitch is
-                straddling between the boundary of two notes the two motors will alternate rapidly back and forth, which a user could interpret as in tune. In
-                addition, after using the device for a long time, the user can become desensitized to vibration making it difficult to determine if its
-                vibrating.
-
-                Watch our demo of the device:
-
-
+                Our system was successfully implemented! We used both a sine wave generator iPhone app and an guitar to test how well the tuner works on
+                pure tones and on harmonic content. It correctly and reliably identified whether a note was in tune, flat, or sharp. It is portable in the
+                sense that it doesn't need power from a wall or from a computer; it is not however portable in the true sense of the word.
+            </p>
+            <h3>Future Work</h3>
+            <p>
+            <ul>
+                <li>If the pitch is straddling between the boundary of two notes the two motors will alternate rapidly back and forth, which a user could
+                    interpret as in tune. With the addition of a selector switch, the user could put the tuner into common tuning modes (standard EADG(BE),
+                    half step down, drop D, chromatic, etc.). This would eliminate this problem in the common scenarios where non-chromatic tuning systems
+                    are needed.
+                </li>
+                <li>The band material is a thin Velcro strip, which doesn't damp vibration very well. Because of this, either motor vibrating will cause
+                    the entire band to vibrate, making it difficult to tell which is vibrating.
+                </li>
+                <li>
+                    Because the design relies on no visual information, there is only an indication or whether a note is in tune or not, not what note that
+                    actually is.
+                </li>
+                <li>
+                    This design needs miniaturization. Printing a custom PCB that has the microphone and motor circuitry and embedding it directly into the
+                    band would be a considerable step, but a necessary one to make HapTuner truly work.
+                </li>
+            </ul>
             </p>
 
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/UrniAXHIE7g" frameborder="0"
-                    allowfullscreen></iframe>
+            <!--<iframe width="560" height="315" src="https://www.youtube.com/embed/UrniAXHIE7g" frameborder="0" allowfullscreen></iframe>-->
         </div>
         <div class="image">
             <img src="images/design/hand-thumb-up.jpg" alt=""/>
