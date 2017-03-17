@@ -37,8 +37,17 @@
              id="first">
         <div class="content">
             <h2>Inspiration</h2>
-            <p>The world of music is a great unifier, and is uniquely accessible to almost everyone.  Particularly for individuals with visual impairments, music is a way to connect with fewer barriers to access than most aspects of our visually driven world.  That being said, there are many tools within the world of music that rely upon visual output, and up until now, the tuner was one of those.  To tune an instrument either requires significant skill to tune by ear, or the ability to read the screen of a tuner.  Using this problem space as inspiration, we decided to jump into the world of haptics as a way to make this tool accessible.  Enter the HapTuner, a chromatic tuner that can be worn on the wrist, and uses two vibrating disk motors to indicate if a note is sharp, flat or in tune. This tuner has special significance because of its accessibility, but is more generally a beneficial tool for all musicians.  Being able to tune an instrument while reading music, or without needing to focus intensely on a small tuner eases the experience for all, and provides a novel approach to this problem space.  We believe that a haptic tuner fulfills a currently unaddressed need for visually impaired musicians, creates an excellent new tool for sighted musicians, and is just the beginning of an exploration of how haptic devices could augment the world of music. 
-</p>
+            <p>The world of music is a great unifier, and is uniquely accessible to almost everyone. Particularly for individuals with visual impairments, music
+                is a way to connect with fewer barriers to access than most aspects of our visually driven world. That being said, there are many tools within
+                the world of music that rely upon visual output, and up until now, the tuner was one of those. To tune an instrument either requires significant
+                skill to tune by ear, or the ability to read the screen of a tuner. Using this problem space as inspiration, we decided to jump into the world
+                of haptics as a way to make this tool accessible. Enter the HapTuner, a chromatic tuner that can be worn on the wrist, and uses two vibrating
+                disk motors to indicate if a note is sharp, flat or in tune. This tuner has special significance because of its accessibility, but is more
+                generally a beneficial tool for all musicians. Being able to tune an instrument while reading music, or without needing to focus intensely on a
+                small tuner eases the experience for all, and provides a novel approach to this problem space. We believe that a haptic tuner fulfills a
+                currently unaddressed need for visually impaired musicians, creates an excellent new tool for sighted musicians, and is just the beginning of an
+                exploration of how haptic devices could augment the world of music.
+            </p>
         </div>
         <div class="image">
             <img src="images/spotlight/snark.jpg" alt=""/>
@@ -50,19 +59,24 @@
         <div class="content">
             <h2>Implementation</h2>
             <p>
-                This project has two key aspects to it: the hardware and software functionality, which are both controlled by the Arduino Teensey 3.2. 
+                This project has two key aspects to it: the hardware and software functionality, which are both controlled by the Arduino Teensey 3.2.
             <h3> Hardware </h3>
-                One of the biggest aspects of this circuit is the microphone.  There is a small microphone whose signal is fed through a high pass and low pass filter to adjust the signal range into the positive domain, which is then fed into an operational amplifier to make the signal strong enough to be meaningful to the Teensey.  It is then sent through a series of capacitors and resistors to further optimize for the Teensey.  The microphone signal is read into  the Teensey, which is also connected to power and ground.  The Teensey then also powers the output devices.  The output devices are comprised of two uxcell vibrating disk motors sewn into a velro bracelets. 
-</p>
+            One of the biggest aspects of this circuit is the microphone. There is a small microphone whose signal is fed through a high pass and low pass
+            filter to adjust the signal range into the positive domain, which is then fed into an operational amplifier to make the signal strong enough to be
+            meaningful to the Teensey. It is then sent through a series of capacitors and resistors to further optimize for the Teensey. The microphone signal
+            is read into the Teensey, which is also connected to power and ground. The Teensey then also powers the output devices. The output devices are
+            comprised of two uxcell vibrating disk motors sewn into a velro bracelets.
+            </p>
 
             <h3> Software </h3>
-        <p>
-                Using a variant of the Yin Pitch Tracking library adapted for the Teensey, written by Collin Duffy, our software samples the audio input and identifies its pitch.  Using the library that we wrote in C++, it also assigns each pitch a score between -1 and 1, identifying how in tune the note is.  The libraries compare the note to the nearest piano key, and identify if it is in tune, or how sharp or flat the note is.  The negative values correspond to the note being flat, the positive values correspond to the note being sharp, and we are experimenting with what the best tolerance for in tune is. After determining this, the software writes to pins to either vibrate one motor if the note is sharp, the other if it is flat, or both if the note is in tune. 
-
-
-
-
-</p>
+            <p>
+                Using a variant of the Yin Pitch Tracking library adapted for the Teensey, written by Collin Duffy, our software samples the audio input and
+                identifies its pitch. Using the library that we wrote in C++, it also assigns each pitch a score between -1 and 1, identifying how in tune the
+                note is. The libraries compare the note to the nearest piano key, and identify if it is in tune, or how sharp or flat the note is. The negative
+                values correspond to the note being flat, the positive values correspond to the note being sharp, and we are experimenting with what the best
+                tolerance for in tune is. After determining this, the software writes to pins to either vibrate one motor if the note is sharp, the other if it
+                is flat, or both if the note is in tune.
+            </p>
         </div>
         <div class="image">
             <img src="images/spotlight02.jpg" alt=""/>
@@ -131,12 +145,13 @@
         <div class="content">
             <h2>Results</h2>
             <p>
-                Our system was successfully implemented! We used both a sine wave generator iPhone app and an guitar to test how well the tuner works. It successfully identified whether a note was in tune, flat, or sharp. The system, however, is not yet optimized for a few cases. If the pitch is straddling between the boundary of two notes the two motors will alternate rapidly back and forth, which a user could interpret as in tune. In addition, after using the device for a long time, the user can become desensitized to vibration making it difficult to determine if its vibrating.  
+                Our system was successfully implemented! We used both a sine wave generator iPhone app and an guitar to test how well the tuner works. It
+                successfully identified whether a note was in tune, flat, or sharp. The system, however, is not yet optimized for a few cases. If the pitch is
+                straddling between the boundary of two notes the two motors will alternate rapidly back and forth, which a user could interpret as in tune. In
+                addition, after using the device for a long time, the user can become desensitized to vibration making it difficult to determine if its
+                vibrating.
 
                 Watch our demo of the device:
-
-
-
 
 
             </p>
@@ -178,7 +193,6 @@
             <img src="images/spotlight01.jpg" alt=""/>
         </div>
     </section>
-
 
     <!-- Footer -->
     <footer class="wrapper style1 align-center">
