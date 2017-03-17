@@ -52,7 +52,7 @@
             <p>
                 This project has two key aspects to it: the hardware and software functionality, which are both controlled by the Arduino Teensey 3.2. 
             <h3> Hardware </h3>
-                One of the biggest aspects of this circuit is the microphone.  There is a small microphone whose signal is fed through a high pass and low pass filter to adjust the signal range into the positive domain, which is then fed into an operational amplifier to make the signal strong enough to be meaningful to the Teensey.  It is then sent through a series of capacitors and resistors to further optimize for the Teensey.  The microphone signal is read into  the Teensey, which is also connected to power and ground.  The Teensey then also powers the output devices.  The output devices are comprised of uxcell vibrating disk motors sewn into a velro bracelets.  As a proof of concept output device, we are using an AND gate to combine external power and LEDs to represent the device output.
+                One of the biggest aspects of this circuit is the microphone.  There is a small microphone whose signal is fed through a high pass and low pass filter to adjust the signal range into the positive domain, which is then fed into an operational amplifier to make the signal strong enough to be meaningful to the Teensey.  It is then sent through a series of capacitors and resistors to further optimize for the Teensey.  The microphone signal is read into  the Teensey, which is also connected to power and ground.  The Teensey then also powers the output devices.  The output devices are comprised of two uxcell vibrating disk motors sewn into a velro bracelets. 
 </p>
 
             <h3> Software </h3>
@@ -131,7 +131,13 @@
         <div class="content">
             <h2>Results</h2>
             <p>
-                In an unsurprising turn of events, getting all of the software and hardware to work together has proven to be a challenge.  We were able to successfully build the microphone circuit and identify the pitch and how in or out of tune it is in.  You can see a video of this on our website! We have had a harder time getting the output devices to work, and are trying to implement both the motors and an LED replacement.  The power draw from the LEDs or motors seems to be difficult for the Teensey to handle, so we have hooked up an external power source to an AND gate, so that the power draw from the Teensey is not as high.  We are continuing to iterate through the best way to implement our output, with the goal being fully haptic, but with LEDs as a proof-of-concept stand in. 
+                Our system was successfully implemented! We used both a sine wave generator iPhone app and an guitar to test how well the tuner works. It successfully identified whether a note was in tune, flat, or sharp. The system did, however, have trouble in a few cases. If the pitch is straddling between the boundary of two notes the two motors will alternate rapidly back and forth, which a user could interpret as in tune. In addition, after using the device for a long time, the user can become desensitized to vibration making it difficult to determine if its vibrating.  
+
+                Watch our demo of the device:
+
+
+
+
 
             </p>
 
