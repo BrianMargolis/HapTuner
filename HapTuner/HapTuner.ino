@@ -21,13 +21,13 @@ AudioConnection             patchCord1(adc, notefreq);
 std::array<float, 88> pitch_freqs;
 std::array<note_name *, 88> pitch_names;
 
-int flat = 11; // pin 14
-int sharp = 12; // pin 15
+int flat = 9; // pin 14
+int sharp = 10; // pin 15
 
 void setup() {
   Serial.begin(9600);
   AudioMemory(30);
-  notefreq.begin(.15);
+  notefreq.begin(.3);
 
   // pitch_freqs[i] = frequency of the ith tuned_note on a piano (A0 = 0)
   float reference = 440.0;
@@ -42,7 +42,7 @@ void setup() {
 
 float freq, prob;
 int doit = 0;
-double tolerance = .02; // acceptable distance from a note to be "in tune"
+double tolerance = .1; // acceptable distance from a note to be "in tune"
 
 void loop() {
   if (notefreq.available()) {
@@ -63,6 +63,7 @@ void loop() {
     Serial.printf("closest tuned_note %c%c\n", name, modifier);
     Serial.printf("distance to closest tuned_note %f\n\n", distance); // note that this ranges from -1 (most flat) to 1 (most sharp).
 
+//    distance = -03;
     if (distance < -tolerance) {
       digitalWrite(flat, HIGH);
       digitalWrite(sharp, LOW);
@@ -70,8 +71,8 @@ void loop() {
       digitalWrite(flat, LOW);
       digitalWrite(sharp, HIGH);
     } else {
-      digitalWrite(flat, LOW);
-      digitalWrite(sharp, LOW);
+      digitalWrite(flat, HIGH);
+      digitalWrite(sharp, HIGH);
     }
   }
 }
